@@ -1,12 +1,11 @@
 package collectionDemo;
 
-import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 
-public class HashDemo {
+public class LinkedHashDemo {
 
 	public static void main(String[] args) {
-		HashSet foodList = new HashSet();
+		LinkedHashSet foodList = new LinkedHashSet();
 		foodList.add("dosa");
 		foodList.add("vada");
 		foodList.add("idli");
