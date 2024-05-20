@@ -250,4 +250,13 @@ PILLARS OF FUNCTIONAL INTERFACE:
 3. FUNCTION -> one argument as input, another as output,
 4. SUPPLIER -> NO argument as input, return bulk of data
 
-
+--------------default and static methods in interface------------
+In java8, interfaces can have default and static methods :) 
+Functional interface -> single abstract method , 
+                        can have default and static methods 
+static method -> can't be overriden 
+        Interface static methods by-default not available to the implementation classes hence by using 
+implementation class reference we can’t call interface static
+      As interface static methods by default not available to the implementation class,overriding concept is 
+not applicable.Based on our requirement we can define exactly same method in the implementation class,it’s valid 
+but not overriding
