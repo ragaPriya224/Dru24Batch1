@@ -1,0 +1,16 @@
+
+-------------default and static methods--------
+try creating a  interface with default method and try to call it in a class
+try creating a interface with default and static method and try to call it in a  class
+
+
+Consumer Exercise:
+
+
+1. use accept method in consumer for a Integer datatype
+2. use andThen accept in consumer for a String datatype
+
+1. change gender of each person to upper case
+2. give 1000rupee bonus to each person as new year bonus 
+
+
