@@ -39,10 +39,11 @@ very vey easy concepts
  {
  sysout("hello");
 }
-  () -> sysout("hello"); 
-{} -> optional
+ () -> sysout("hello"); 
+TO NOTE    {} -> optional
 
 EG: 2
+------
 
  public void m1(int a, int b){
  sysout(a+b);
@@ -51,6 +52,7 @@ EG: 2
  
  
  EG 3:
+-------
  public int squareIt(int n){
  return n*n;
  }
@@ -58,6 +60,7 @@ EG: 2
     (n) ->  n*n;
  
  EG: 4
+------
  public void m1(String s){
  return s.length()
  }
@@ -65,8 +68,8 @@ EG: 2
     ( s) -> s.length();
     
     
-    
-    ---------------------
+  
+    ----------------------------------------  FUNCTIONAL INTERFACE-----------------------------------------------
     FI -> Functional Interface
 Runnable, comparable, actionListener, callable
 common point-> only one method
@@ -96,7 +99,7 @@ public void m1();
 public void m2();
 }
 
---------------------this code gives compilation error.----------------------
+--------------------ABOVE code gives compilation error.----------------------
 
 @FunctionalInterface {
  interface Interface { 
