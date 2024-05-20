@@ -1,0 +1,250 @@
+python, R, scala 
+10 lines of code ->
+100 lines of java -> 
+
+Less number of code -> Functional programming
+ Lambda Expresion -> powerful concept to enable  functional,
+ 					 reduce lines of code
+ 					 
+1. lambda expression
+2. functional interface
+3. default/static methods
+4. predefined  functional interfaces
+     predicate
+     consumer
+     supplier
+     function
+5.Double colon operator (::)
+     for method reference purpose
+     for constructor reference. 
+6. streams, parallel streams
+7. optional classes ( to avoid null pointer exce)
+8. date time api ( util.date or sql.date)
+9. Nashron js engine
+
+
+1. lambda expression
+  
+  lambda -> python, c , c++ 
+   not specific to java, came lately 
+   -> lambda expression
+   objective: to bring benefits of functional programming into javaa
+   ->
+   anonymous function
+ -> no name/ nameless
+ -> without r type, without modifier, without name -> 
+very vey easy concepts
+ 
+ public void m1()
+ {
+ sysout("hello");
+}
+  () -> sysout("hello"); 
+{} -> optional
+
+EG: 2
+
+ public void m1(int a, int b){
+ sysout(a+b);
+ }
+   ( a, b) -> sysout(a+b); //solution
+ 
+ 
+ EG 3:
+ public int squareIt(int n){
+ return n*n;
+ }
+
+    (n) ->  n*n;
+ 
+ EG: 4
+ public void m1(String s){
+ return s.length()
+ }
+ 
+    ( s) -> s.length();
+    
+    
+    
+    ---------------------
+    FI -> Functional Interface
+Runnable, comparable, actionListener, callable
+common point-> only one method
+run(), compareTo(), actionPerformed(), call()
+
+SAM?single abstract method   in functional Interface
+if u wanna invoke lambda expressions, then compulsorily
+
+1.Functional Interface is a interface which contains only one abstract method
+2.Can contain default and static methods
+3. @Functional Interface annotation is optional.
+4. Lambda Expression used to represent instance of functional interface
+
+
+
+
+
+ interface Interf {
+ public abstract void m1();
+     default void m2() {
+        System.out.println ( "hello)';
+      }
+ } 
+------above valid-------------
+@FunctionalInterface {
+public void m1(); 
+public void m2();
+}
+
+--------------------this code gives compilation error.----------------------
+
+@FunctionalInterface {
+ interface Interface { 
+}
+
+
+-----above code compilation error ------------------
+
+
+@FunctionalInterface
+ interface A {
+ public void methodOne();
+ }
+ 
+ @FunctionalInterface
+ Interface B extends A {
+ } 
+
+-=------------validabove--------------
+@FunctionalInterface
+interface A {
+ public void methodOne();
+ }
+
+ @FunctionalInterface
+ interface B extends A {
+ public void methodOne();
+ } 
+
+-------------------above valid -------------
+
+
+@FunctionalInterface {
+ interface A {
+ public void methodOne();
+ }
+
+
+ @FunctionalInterface
+ interface B extends A {
+ public void methodTwo();
+ }
+
+-------------above error ------------
+
+ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!QN: 1!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+ ==without lambda expression=======
+ interface Interf{
+ public void m1();
+ }
+ 
+class Demo implements Interf{
+public void m1(){
+s.out("hello")}
+}
+ class Test{
+ psvm(){
+// Demo d = new Demo();
+// d.m1();
+ Interf i = new Demo();
+ i.m1();
+ }
+ }
+=======================WITH LAMBDA EXPRESSION ===============================
+we are not required to take any implementation classes, instead use lambda expressions.
+we use lambda expressions directly to implement m1.
+
+interface Interf{
+ public void m1();
+  class Test{
+ psvm(){
+ Interf i = () -> s.out("hello");
+//right side is converting m1 method implementation to lambda expression
+//compiler easily guess these are implementation to m1 method . 
+ i.m1(); //need to call
+ }
+ }
+
+//here, no need to implementation class
+// interface reference can be used to hold lambda expression
+ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!QN: 2!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+ -----without lambda----------
+ QN:2 
+ interface Interf{
+ public void add(int a, int b);
+ }
+class Demo implements Interf{
+public void add(int a, int b){
+s.out(a+b);
+}
+}
+ class Test{
+ psvm(){
+Interf i = new Demo();
+i.add(10,20);
+i.add(100,200);
+}}
+
+==========with lambda expresion============
+interface Interf{
+ public void add(int a, int b);
+ }
+ class Test{
+ psvm(){
+ Interf i  = (a,b) -> s.out(a+b);
+//compiler can guess automatically the type, type inference.
+ i.add(10,20);
+i.add(100,200);
+ }
+ }'
+ ==============================
+ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!QN: 3!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+ -----without lambda----------
+
+ QN:
+ interface Interf{
+ public int getLEngth(String s);
+ }
+class Demo implements Interf{
+public int getLength(String s){
+return s.length();
+}
+}
+ class Test{
+ psvm(){
+Interf i = new Demo();
+s.out(i.getLength("hello"));
+s.out(i.getLength("without lambda"));
+}}
+==============with lambda=================
+ interface Interf{
+ public int getLEngth(String s);
+ }
+ class Test{
+ psvm(){
+//Interf i = (String s ) ->{return s.length();}
+Interf i = ( s ) ->s.length();
+s.out(i.getLength("hello"));//ivoke method
+s.out(i.getLength("with lambda"));
+}}
+----------------------------------------
+
+PILLARS OF FUNCTIONAL INTERFACE:
+
+1.CONSUMER -> single argument as input , not return anything
+2.PREDICATE -> single argument as input, return BOOLEAN 
+3. FUNCTION -> one argument as input, another as output,
+4. SUPPLIER -> NO argument as input, return bulk of data
+
+
