@@ -16,3 +16,34 @@ Consumer Exercise:
 
 1. change gender of each person to upper case
 2. give 1000rupee bonus to each person as new year bonus 
+
+
+BiConsumer Exercise:
+
+1. try BIconsumer with integer input and do some operations
+2. try BIconsumer with string input and do some operations
+3. try andThen method in BIconsumer
+
+1. use accept method in BIconsumer for a Integer datatype
+2. use andThen accept in BIconsumer for a String datatype
+  
+1.  get both  salary and the hobbies but the hobbies must be in  upper case
+2. get name and salary 
+  
+PREDICATE::
+
+ 1 Write a predicate to check the length of given string is greater than 3 or not.
+2. try exploring, and or, test methods in predicate
+
+1. check gender is female and salary greater 2000
+
+BIPREDICATE:
+
+ 1 Write a predicate to check the length of given string is greater than 3 or not.
+2. try exploring, and or, test methods in predicate 
+3. try exploring bipredicate as well 
+
+SUPPLIER, FUNCTION
+TRY EXPLORING
+------------------------------------------
+
