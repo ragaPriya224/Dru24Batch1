@@ -51,7 +51,7 @@ stream
 1. try to print the count of the datas having length greater than 3 
 
 2. write a logic to convert all the datas in a list to uppercase 
-
+==============================
 2. Have a list of string for cities like chennai, mumbai, bangalore , delhi ,chicago
 
 List<String> cityList = Arrays.asList("chennai", "mumbai", "bangalore", "", "delhi", "chicago");
@@ -66,7 +66,12 @@ v) append  the word "metro" to all the cities (hint: manipulation )
 vii) count how many cities start with c  (hint:use terminal operation:count)
 ix) count the empty string  (hint:use terminal operation:count)
 x) remove all empty string from list
-
+===============
+Given a list of strings, write a method that returns a list of all strings that start with the letter 'a' (lower case) and have exactly 3 letters. TIP: Use Java 8 Lambdas and Streams API's.
+public List<String> search(List<String> list) {
+//YOUR CODE HERE
+​
+ } 
 
 
 
