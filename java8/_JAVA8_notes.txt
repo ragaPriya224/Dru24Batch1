@@ -260,3 +260,29 @@ implementation class reference we can’t call interface static
       As interface static methods by default not available to the implementation class,overriding concept is 
 not applicable.Based on our requirement we can define exactly same method in the implementation class,it’s valid 
 but not overriding
+
+
+=============================METHOD REFERENCE=============
+METHOD REFERENCE 
+ 1. REFERENCE TO  STATIC METHOD
+ 2. REFERENCE TO INSTANCE METHOD
+ 3. REFERENCE TO CONSTRUCTOR 
+
+1.  1. REFERENCE TO  STATIC METHOD
+
+syntax: ClassName::staticMethodname
+
+2. REFERENCE TO INSTANCE METHOD
+
+syntax: Object::instanceMethodName
+
+
+lambda xpression
+s -> s.toString();
+
+String::toString
+
+s -> s.toLowerCase();
+String::toLowerCase
+
+s ->s.toLength();
