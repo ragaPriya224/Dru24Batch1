@@ -46,4 +46,28 @@ BIPREDICATE:
 SUPPLIER, FUNCTION
 TRY EXPLORING
 ------------------------------------------
+stream
+ List<String> names = Arrays.asList("Sam", "Peter","ballon","Sam");
+1. try to print the count of the datas having length greater than 3 
+
+2. write a logic to convert all the datas in a list to uppercase 
+
+2. Have a list of string for cities like chennai, mumbai, bangalore , delhi ,chicago
+
+List<String> cityList = Arrays.asList("chennai", "mumbai", "bangalore", "", "delhi", "chicago");
+
+
+ i) convert the  all te cities to uppercase
+ ii) filter te cities whose lengt is greater than 6
+iii) filter the cities that starts with c
+iv) print the cities that contains "ai"
+v) append  the word "metro" to all the cities (hint: manipulation )
+
+vii) count how many cities start with c  (hint:use terminal operation:count)
+ix) count the empty string  (hint:use terminal operation:count)
+x) remove all empty string from list
+
+
+
+
 
