@@ -66,6 +66,16 @@ public class StreamDemo {
 		System.out.println(disList);
 		//foreach : terminal operation 
 		nameList.stream().forEach(System.out::println);
+
+		//sorted list
+			// TODO Auto-generated method stub
+		List<String> cityList = Arrays.asList("Gurgaon" , "NewDelhi" , "Mumbai","tokyo","berlin","bombay");
+
+		//length>5
+		List<String> sortedList = cityList.stream().filter(name -> name.length()>5).sorted().collect(Collectors.toList());
+		System.out.println(sortedList);
+
+		
 	}
 
 }
