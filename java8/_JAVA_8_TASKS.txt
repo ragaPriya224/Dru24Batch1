@@ -72,7 +72,13 @@ public List<String> search(List<String> list) {
 //YOUR CODE HERE
 ​
  } 
-
-
+===========match ============
+6. have your own data, try using allmatch, anymatch, nomatch
+==================streams 
+have the person, personrepository as data model 
+1.  Write a program to print the names of all person
+2.  Write a program to print the gender  all person
+3. Get the Names of persons whose height greater than 110
+4.
 
 
