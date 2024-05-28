@@ -187,6 +187,7 @@ If a Thread don't want to perform any operation for a particular amount of time 
 we should go for sleep() method. 
 
 Interrupting a Thread: 
+----------------------
  
 How a Thread can interrupt another thread ?  
 If a Thread can interrupt a sleeping or waiting Thread by using interrupt()(break off) 
