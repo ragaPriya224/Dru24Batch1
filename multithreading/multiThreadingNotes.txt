@@ -198,3 +198,226 @@ if interrupt() - on waiting/sleeping thread - it will be interrupted immediately
 if interrupt() - on a normal thread - it will wait, until the thread enters waiting/sleeping state 
 				      once thread enters waiting/sleeping state , then it will be interrupted immediately
 				      thread never enters waiting/sleeping state, interrupt() call is wasted :( 
+
+-----------------------------
+Synchronization 
+1. Synchronized is the keyword applicable for methods and blocks but not for 
+classes and variables. 
+2. If a method or block declared as the synchronized then at a time only one 
+Thread is allow to execute that method or block on the given object. 
+3. The main advantage of synchronized keyword is we can resolve date 
+inconsistency problems. 
+4. But the main disadvantage of synchronized keyword is it increases waiting time 
+of the Thread and effects performance of the system. 
+5. Hence if there is no specific requirement then never recommended to use 
+synchronized keyword. 
+6. Internally synchronization concept is implemented by using lock concept. 
+7. Every object in java has a unique lock. Whenever we are using synchronized 
+keyword then only lock concept will come into the picture. 
+8. If a Thread wants to execute any synchronized method on the given object 1st it 
+has to get the lock of that object. Once a Thread got the lock of that object then 
+it's allow to execute any synchronized method on that object. If the synchronized 
+method execution completes then automatically Thread releases lock. 
+9. While a Thread executing any synchronized method the remaining Threads are 
+not allowed execute any synchronized method on that object simultaneously. But 
+remaining Threads are allowed to execute any non-synchronized method 
+simultaneously.
+
+If we are not declaring m1() method as synchronized then both Threads will be 
+executed simultaneously and we will get irregular output.
+
+
+Case study: 
+Case 1: 
+Display d1=new Display(); 
+Display d2=new Display(); 
+MyThread t1=new MyThread(d1,"dhoni"); 
+MyThread t2=new MyThread(d2,"yuvaraj"); 
+t1.start(); 
+t2.start();
+
+ 
+Even though we declared wish() method as synchronized but we will get irregular 
+output in this case, because both Threads are operating on different objects.  
+Conclusion : If multiple threads are operating on multiple objects then there is no 
+impact of Syncronization. 
+If multiple threads are operating on same java objects then syncronized concept is 
+required(applicable). 
+
+
+Class level lock: 
+------------------
+1. Every class in java has a unique lock. If a Thread wants to execute a static 
+synchronized method then it required class level lock. 
+2. Once a Thread got class level lock then it is allow to execute any static 
+synchronized method of that class. 
+3. While a Thread executing any static synchronized method the remaining 
+Threads are not allow to execute any static synchronized method of that class 
+simultaneously. 
+4. But remaining Threads are allowed to execute normal synchronized methods, 
+normal static methods, and normal instance methods simultaneously. 
+5. Class level lock and object lock both are different and there is no relationship 
+between these two. 
+
+Synchronized block: 
+-------------------
+1. If very few lines of the code required synchronization then it's never 
+recommended to declare entire method as synchronized we have to enclose those 
+few lines of the code with in synchronized block. 
+2. The main advantage of synchronized block over synchronized method is it 
+reduces waiting time of Thread and improves performance of the system. 
+
+ 
+Example 1: To get lock of current object we can declare synchronized block as follows. 
+If Thread got lock of current object then only it is allowed to execute this block. 
+Synchronized(this){}  
+
+Example 2: To get the lock of a particular object 'b' we have to declare a synchronized 
+block as follows. 
+If thread got lock of 'b' object then only it is allowed to execute this block. 
+Synchronized(b){}  
+
+Example 3: To get class level lock we have to declare synchronized block as follows. 
+Synchronized(Display.class){}  
+If thread got class level lock of Display then only it allowed to execute this block.  
+
+
+Inter Thread communication (wait(),notify(), notifyAll()): 
+-----------------------------------------------------------
+ Two Threads can communicate with each other by using wait(), notify() and 
+notifyAll() methods. 
+ The Thread which is required updation it has to call wait() method on the 
+required object then immediately the Thread will entered into waiting state. 
+The Thread which is performing updation of object, it is responsible to give 
+notification by calling notify() method. 
+After getting notification the waiting Thread will get those updations. 
+
+wait(), notify() and notifyAll() methods are available in Object class but not in 
+Thread class because Thread can call these methods on any common object. 
+ To call wait(), notify() and notifyAll() methods compulsory the current Thread 
+should be owner of that object  
+i.e., current Thread should has lock of that object 
+i.e., current Thread should be in synchronized area. Hence we can call wait(), 
+notify() and notifyAll() methods only from synchronized area otherwise we will 
+get runtime exception saying IllegalMonitorStateException. 
+ Once a Thread calls wait() method on the given object 1st it releases the lock of 
+that object immediately and entered into waiting state. 
+ Once a Thread calls notify() (or) notifyAll() methods it releases the lock of that 
+object but may not immediately. 
+ Except these (wait(),notify(),notifyAll()) methods there is no other place(method) 
+where the lock release will be happen. 
+
+
+Producer consumer problem: 
+ Producer(producer Thread) will produce the items to the queue and 
+consumer(consumer thread) will consume the items from the queue. If the queue 
+is empty then consumer has to call wait() method on the queue object then it will 
+entered into waiting state. 
+ After producing the items producer Thread call notify() method on the queue to 
+give notification so that consumer Thread will get that notification and consume 
+items.
+
+
+
+Notify vs notifyAll(): 
+ We can use notify() method to give notification for only one Thread. If multiple 
+Threads are waiting then only one Thread will get the chance and remaining 
+Threads has to wait for further notification. But which Thread will be 
+notify(inform) we can't expect exactly it depends on JVM. 
+ We can use notifyAll() method to give the notification for all waiting Threads. All 
+waiting Threads will be notified and will be executed one by one, because they 
+are required lock
+
+
+Dead lock: 
+ If 2 Threads are waiting for each other forever(without end) such type of 
+situation(infinite waiting) is called dead lock. 
+ There are no resolution techniques for dead lock but several 
+prevention(avoidance) techniques are possible. 
+ Synchronized keyword is the cause for deadlock hence whenever we are using 
+synchronized keyword we have to take special care. 
+
+
+Daemon Threads: 
+The Threads which are executing in the background are called daemon Threads. 
+The main objective of daemon Threads is to provide support for non-daemon Threads 
+like main Thread. 
+Example:  
+Garbage collector  
+When ever the program runs with low memory the JVM will execute Garbage Collector 
+to provide free memory. So that the main Thread can continue it's execution.  
+ We can check whether the Thread is daemon or not by using isDaemon() method 
+of Thread class.  
+public final boolean isDaemon();  
+ We can change daemon nature of a Thread by using setDaemon () method.  
+public final void setDaemon(boolean b);  
+ But we can change daemon nature before starting Thread only. That is after 
+starting the Thread if we are trying to change the daemon nature we will get R.E 
+saying IllegalThreadStateException. 
+ Default Nature : Main Thread is always non daemon and we can't change its 
+daemon nature because it's already started at the beginning only. 
+ Main Thread is always non daemon and for the remaining Threads daemon 
+nature will be inheriting from parent to child that is if the parent is daemon child 
+is also daemon and if the parent is non daemon then child is also non daemon. 
+ Whenever the last non daemon Thread terminates automatically all daemon 
+Threads will be terminated.
+
+
+Deadlock vs Starvation: 
+----------------------------
+ A long waiting of a Thread which never ends is called deadlock. 
+ A long waiting of a Thread which ends at certain point is called starvation. 
+ A low priority Thread has to wait until completing all high priority Threads. 
+ This long waiting of Thread which ends at certain point is called starvation. 
+
+How to kill a Thread in the middle of the line? 
+----------------------------------------------
+ We can call stop() method to stop a Thread in the middle then it will be entered 
+into dead state immediately. 
+public final void stop();  
+ stop() method has been deprecated and hence not recommended to use. 
+
+suspend and resume methods: 
+------------------------------
+ A Thread can suspend another Thread by using suspend() method then that 
+Thread will be paused temporarily. 
+ A Thread can resume a suspended Thread by using resume() method then 
+suspended Thread will continue its execution.  
+1. public final void suspend(); 
+2. public final void resume(); 
+ Both methods are deprecated and not recommended to use. 
+
+RACE condition: 
+------------------
+Executing multiple Threads simultaneously and causing data inconsistency problems is 
+nothing but Race condition 
+we can resolve race condition by using synchronized keyword. 
+
+ThreadGroup: 
+------------
+Based on functionality we can group threads as a single unit which is nothing but 
+ThreadGroup. 
+ 
+ThreadGroup provides a convenient way to perform common operations for all threads 
+belongs to a perticular group.  
+We can create a ThreadGroup by using the following constructors  
+ThreadGroup g=new ThreadGroup(String gName);  
+
+ 
+We can attach a Thread to the ThreadGroup by using the following constructor of 
+Thread class 
+Thread t=new Thread(ThreadGroup g, String name);  
+ThreadGroup g=new ThreadGroup("Printing Threads"); 
+MyThread t1=new MyThread(g,"Header Printing"); 
+MyThread t2=new MyThread(g,"Footer Printing"); 
+MyThread t3=new MyThread(g,"Body Printing");
+
+
+GreenThread Model 
+------------------
+The threads which are managed completely by JVM without taking support for 
+underlying OS, such type of threads are called Green Threads.
+
+
+
+
