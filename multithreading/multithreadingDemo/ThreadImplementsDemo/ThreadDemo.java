@@ -7,10 +7,11 @@ public class ThreadDemo {
 		MyRunnable r = new MyRunnable();// instantiated a thread
 		Thread t = new Thread(r);
 		t.start(); //starting a thread
-		
+		Thread.currentThread().setPriority(15);
 		for(int i = 0;i<5;i++) {
 			System.out.println("main " +Thread.currentThread().getName());
 		}
+		
 	}
 
 }
