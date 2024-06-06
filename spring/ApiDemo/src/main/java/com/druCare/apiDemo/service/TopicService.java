@@ -36,4 +36,8 @@ public class TopicService {
 		
 		
 	}
+
+	public void addTopic(Topic t) {
+		topicList.add(t);
+	}
 }
