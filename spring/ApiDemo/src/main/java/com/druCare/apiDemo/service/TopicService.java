@@ -40,4 +40,13 @@ public class TopicService {
 	public void addTopic(Topic t) {
 		topicList.add(t);
 	}
+
+	public void deleteTopic(String id) {
+		for(int i = 0; i<topicList.size();i++) {
+			if(topicList.get(i).getId().equals(id)) {
+				topicList.remove(i);
+			}
+		}
+		
+	}
 }
