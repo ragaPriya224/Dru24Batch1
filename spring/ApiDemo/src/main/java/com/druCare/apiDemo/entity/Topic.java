@@ -1,8 +1,12 @@
 package com.druCare.apiDemo.entity;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
 public class Topic {
 
-	
+	@Id
 	private String id;
 	private String contents;
 	private String name;
