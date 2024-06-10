@@ -3,8 +3,12 @@ package com.druCare.apiDemo.service;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.druCare.apiDemo.entity.Topic;
@@ -53,5 +57,15 @@ public class TopicService {
 //		}
 //		
 		topicRepository.deleteById(id);
+	}
+
+	public Page<Topic> getTopicByPage(Optional<Integer> pageNo,Optional<String> sortColumn) {
+		// TODO Auto-generated method stub
+		return topicRepository.findAll(PageRequest.of
+				(pageNo.orElse(0),  //page number
+						3,//3 record per page
+						Direction.DESC,
+						sortColumn.orElse("id") // sort by column
+						));
 	}
 }
