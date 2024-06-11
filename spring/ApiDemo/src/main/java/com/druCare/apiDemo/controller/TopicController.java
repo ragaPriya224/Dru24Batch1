@@ -55,7 +55,11 @@ public class TopicController {
 		return service.getTopicByPage(pageNo,sortBy);
 	}
 	
-	
+	@GetMapping("/topic/search")
+	public List<Topic> searchTopic(@RequestParam("query") String query){
+		return service.searchTopic(query);
+
+	}
 	
 	
 }

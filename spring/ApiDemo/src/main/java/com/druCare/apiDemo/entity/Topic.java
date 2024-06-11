@@ -1,9 +1,12 @@
 package com.druCare.apiDemo.entity;
 
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name ="topicdemo")
 public class Topic {
 
 	@Id

@@ -68,4 +68,9 @@ public class TopicService {
 						sortColumn.orElse("id") // sort by column
 						));
 	}
+
+	public List<Topic> searchTopic(String query) {
+		// TODO Auto-generated method stub
+		return topicRepository.searchTopicDemo(query);
+	}
 }
