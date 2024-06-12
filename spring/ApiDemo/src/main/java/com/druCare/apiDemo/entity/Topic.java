@@ -11,6 +11,7 @@ public class Topic {
 
 	@Id
 	private String id;
+	
 	private String contents;
 	private String name;
 	
