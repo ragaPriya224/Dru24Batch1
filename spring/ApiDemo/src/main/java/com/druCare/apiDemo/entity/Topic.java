@@ -11,12 +11,12 @@ public class Topic {
 
 	@Id
 	private String id;
-	
+
 	private String contents;
 	private String name;
-	
+
 	public Topic() {
-		
+
 	}
 	public Topic(String id, String contents, String name) {
 		super();
@@ -24,7 +24,7 @@ public class Topic {
 		this.contents = contents;
 		this.name = name;
 	}
-	
+
 	public String getId() {
 		return id;
 	}
@@ -44,4 +44,5 @@ public class Topic {
 		this.name = name;
 	}
 	
+
 }

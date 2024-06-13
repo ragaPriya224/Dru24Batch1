@@ -1,8 +1,14 @@
 package com.druCare.apiDemo.controller;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,46 +20,33 @@ import com.druCare.apiDemo.service.CourseService;
 public class CourseController {
 
 	@Autowired
-	CourseService service;
+	CourseService courseService;
 	
 	
-//	@GetMapping("/topic/{id}/course")
-//	public  List<Course> getAllCourse(@PathVariable String id) {
-//		return service.getAllCourse(id);
-//	}
-	
-//	
-//	@GetMapping("/topic/{id}")
-//	public Course getCourse(@PathVariable String id) {
-//		return service.getCourse(id);
-//	}
-//	
-	@PostMapping("/topic/{id}/course")
-	public void addCourse(@RequestBody Course c, @PathVariable String id  ) {
-		c.setTopic(new Topic(id,"",""));
-		service.addCourse(c);
+	@GetMapping("/topic/{id}/course")
+	public  List<Course> getAllCourse(@PathVariable String id) {
+		return courseService.getAllCourse(id);
 	}
-//	
-//	@DeleteMapping("/topic/{id}")
-//	public void deleteTopic(@PathVariable String id) {
-//		 service.deleteTopic(id);
-//	}
-//	
-//	@PutMapping("topic/{id}")
-//	public void updateTopic(@RequestBody Topic t ) {
-//		service.updateTopic(t);
-//	}
-//	@GetMapping("/topic/page")
-//	public  Page<Topic> getTopicByPage(@RequestParam("pageNo") Optional<Integer> pageNo,
-//			@RequestParam("sort") Optional<String> sortBy) {
-//		return service.getTopicByPage(pageNo,sortBy);
-//	}
-//	
-//	@GetMapping("/topic/search")
-//	public List<Topic> searchTopic(@RequestParam("query") String query){
-//		return service.searchTopic(query);
-//
-//	}
 	
+	@GetMapping("/topic/{id}/course/{courseId}")
+	public Optional<Course> getCourse(@PathVariable String courseId) {
+		return courseService.getCourse(courseId);
+	}
+	
+	@PostMapping("/topic/{id}/course")
+	public void addCourse(@RequestBody Course course,@PathVariable String id) {
+		course.setTopic(new Topic(id,"",""));
+		courseService.addCourse(course);
+	}
+	
+	@DeleteMapping("/topic/{topicId}/course/{id}")
+	public void deleteCourse(@PathVariable String id) {
+		courseService.deleteCourse(id);
+	}
+	
+	@PutMapping("topic/{id}/course/{courseId}")
+	public void updateCourse(@RequestBody Course course,@PathVariable String courseId ) {
+		courseService.updateCourse(course,courseId);
+	}
 	
 }
