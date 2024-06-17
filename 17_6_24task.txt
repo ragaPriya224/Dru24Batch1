@@ -1,0 +1,7 @@
+see w3schools website and https://www.w3schools.com/sql/sql_null_values.asp
+
+see the syntax and practice it for basic operations like select with or without condition , insert, update, delete, aggregate functions, and , or,  like, 
+see also on, how to find the records
+
+
+tomorrow, we'll solve problems regarding this. 
