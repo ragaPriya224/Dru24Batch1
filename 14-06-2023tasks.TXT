@@ -1,0 +1,60 @@
+2 entity must be created - Employee and payslip
+relationship: for every employee, there can be multiple payslip 
+
+API to hit  details of all employees
+API to hit details of particular employee
+API to - save, update , delete employee
+API to hit  details of all payslips assosciated with a particular employee
+API to hit details of particular payslip
+API to - save, update , delete payslip
+
+
+some standards needed to be followed
+------------------------------------
+
+
+1.For an easy understanding use this sample structure for every resource:
+GET - /users - Returns a list of users
+GET - users/100 - Returns a specific user
+POST - /users - Create a new user
+PUT - /users/ - Updates a specific user
+DELETE - /users/711 - Deletes a specific user
+
+2.Bad Practice: Do not use verbs like:
+/getAllUsers
+/getUserById
+/createNewUser
+/updateUser
+/deleteUser
+
+3. Use Plural Nouns to Name a Resource
+When you have to develop the resource in REST API, just go with plural nouns. Don't mix up singular and plural, use plural nouns to name a resource.
+
+For example:
+Use /students instead of /student
+Use /employees instead of /employee
+Use /orders instead of /order
+Use /users instead of /user
+Use /customers instead of /customer
+
+4. Field Name Casing Convention
+You can follow any casing convention, but make sure it is consistent across the application. If the request body or response type is JSON then please follow camelCase to maintain consistency.
+The below example uses camelCase as JSON field name:
+	{
+		"firstName": "Ramesh",
+		"lastName": "Fadatare",
+		"id": 100,
+		"userName": "Ramesh Fadatare",
+		"email": "ramesh@gmail.com"
+	}
+
+ 5. Searching, Sorting, Filtering, and Pagination
+For searching, sorting, filtering, and pagination no need to create a new REST API, you can support these operations in the existing GET REST API, just append the query params with the GET REST API.
+For example:
+Sorting - In case, the client wants to get the sorted list of companies, the GET /companiesendpoint should accept multiple sort params in the query. E.g GET /companies?sort=rank_asc would sort the companies by their rank in ascending order.
+Filtering - For filtering the dataset, we can pass various options through query params. E.g GET /companies?category=banking&location=india would filter the companies list data with the company category of Banking and where the location is India. 
+Searching - When searching for the company name in the companies list the API endpoint should be GET /companies?search=Digital .
+Pagination - When the dataset is too large, we divide the data set into smaller chunks, which helps in improving the performance and is easier to handle the response. Eg. GET /companies?page=23 means get the list of companies on the 23rd page.
+
+
+

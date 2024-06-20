@@ -1,0 +1,7 @@
+create-drop
+  it creates a tables and then it drops the entire  db
+
+create 
+  it creates
+update 
+   
