@@ -1,0 +1,23 @@
+1. create 3 sb projects
+2. build 3 api    
+    build movie catalogue api
+    build movie info api 
+    build ratings api 
+3.have movie catalogue service to call other 2 services. 
+4. optimize the code.. 
+
+
+=====
+
+create sb project with 1 springweb dep
+create controller, entity for all 3 services
+to do : make rest call from our code, by using rest client library 
+( microservice communicate with other microservices: resttemplate, webclient , messagebrokers .. )
+
+use    RestTemplate -  to call external microservices api
+
+//get all rated movie id's
+// for each movie id, call movieinfoservice  and get the details 
+// put them all together. 
+// rating- hardcoding 
+
