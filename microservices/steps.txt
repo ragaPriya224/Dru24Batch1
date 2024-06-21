@@ -5,3 +5,8 @@
     build ratings api 
 3.have movie catalogue service to call other 2 services. 
 4. optimize the code.. 
+
+
+=====
+
+create sb project with 1 springweb dep
