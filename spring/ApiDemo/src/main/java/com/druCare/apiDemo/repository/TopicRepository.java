@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.druCare.apiDemo.entity.Topic;
 
 @Repository
-public interface TopicRepository extends JpaRepository<Topic, String>{
+public interface TopicRepository extends JpaRepository<Topic, Long>{
 // jpql, native query 
 	//native sql query
 	@Query(value = "select * from Topic where contents like concat('%',:query,'%')",nativeQuery = true)

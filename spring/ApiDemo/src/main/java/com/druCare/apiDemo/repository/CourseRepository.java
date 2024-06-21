@@ -11,5 +11,5 @@ import com.druCare.apiDemo.entity.Course;
 public interface CourseRepository extends JpaRepository<Course, String>{
 	
 	
-	List<Course> findByTopicId(String topicId);
+	List<Course> findByTopicId(Long topicId);
 }
