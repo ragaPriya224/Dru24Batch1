@@ -1,0 +1,7 @@
+1. create 3 sb projects
+2. build 3 api    
+    build movie catalogue api
+    build movie info api 
+    build ratings api 
+3.have movie catalogue service to call other 2 services. 
+4. optimize the code.. 
