@@ -10,3 +10,14 @@
 =====
 
 create sb project with 1 springweb dep
+create controller, entity for all 3 services
+to do : make rest call from our code, by using rest client library 
+( microservice communicate with other microservices: resttemplate, webclient , messagebrokers .. )
+
+use    RestTemplate -  to call external microservices api
+
+//get all rated movie id's
+// for each movie id, call movieinfoservice  and get the details 
+// put them all together. 
+// rating- hardcoding 
+
