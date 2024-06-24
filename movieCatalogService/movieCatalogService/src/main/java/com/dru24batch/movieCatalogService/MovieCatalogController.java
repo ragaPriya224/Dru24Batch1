@@ -1,6 +1,5 @@
 package com.dru24batch.movieCatalogService;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,14 +18,11 @@ public class MovieCatalogController {
 	@GetMapping("/catalog/{userId}")
 	public List<CatalogItem> getCatalog(@PathVariable String userId){
 
-
-		List<Rating> ratingsList = Arrays.asList(
-				new Rating("123",4), //movie id, rating
-				new Rating("456",3));  // assume this the response we got from ratingsdata api 
-
-		return 	ratingsList.stream().map(ratings ->{
+	UserRating userRating = 	rt.getForObject("http://localhost:8083/ratingsdata/users/"+userId, UserRating.class);
+		
+		return 	userRating.getUserRating().stream().map(ratings ->{
 			Movie movie =rt.getForObject("http://localhost:8082/movie/"+ratings.getMovieId(), Movie.class);
-			return new CatalogItem(movie.getName(),"  " ,ratings.getRating());// must come from api 
+			return new CatalogItem(movie.getName(),"  " ,ratings.getRating());
 
 		}).collect(Collectors.toList());
 	}

@@ -18,12 +18,15 @@ public class RatingsController {
 	}
 	//userid -? movieId's
 
-	@GetMapping("/users/{userId}")
-	public List<Rating>   getUserRating(@PathVariable String userId) {
+	@GetMapping("ratingsdata/users/{userId}")
+	public UserRating   getUserRating(@PathVariable String userId) {
 		List<Rating> ratingsList = Arrays.asList(
 				new Rating("123",4), //movie id, rating
 				new Rating("456",3));  // assume this the response we got from ratingsdata api 
-		return ratingsList;
+	
+		UserRating user = new UserRating();
+		user.setUserRating(ratingsList);
+		return user;
 	}
 
 }
