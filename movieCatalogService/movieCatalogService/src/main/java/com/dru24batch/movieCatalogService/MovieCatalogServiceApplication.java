@@ -13,12 +13,8 @@ public class MovieCatalogServiceApplication {
 		SpringApplication.run(MovieCatalogServiceApplication.class, args);
 	}
 
-//	@Bean
-//	public RestTemplate getRestTemplate() {
-//		return new RestTemplate();
-//	}
 	@Bean
-	public WebClient.Builder getWebClientBuilder(){
-		  return WebClient.builder();
-	}	  
+	public RestTemplate getRestTemplate() {
+		return new RestTemplate();
+	}
 }
