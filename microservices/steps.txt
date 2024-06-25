@@ -27,3 +27,6 @@ use    RestTemplate -  to call external microservices api
 1. START UP EUREKA SERVER
 2. HAVE MICROSERVICES REGISTER (PUBLISH)  USING EUREKA CLIENT
 3. HAVE MICROSERVICES GETS LOCATED VIA EUREKA CLIENT 
+
+
+a. create a spring boot project for eureka server - dependency springweb, eurekaserver
