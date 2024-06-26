@@ -18,10 +18,10 @@ public class MovieCatalogController {
 	@GetMapping("/catalog/{userId}")
 	public List<CatalogItem> getCatalog(@PathVariable String userId){
 
-	UserRating userRating = 	rt.getForObject("http://localhost:8083/ratingsdata/users/"+userId, UserRating.class);
+	UserRating userRating = 	rt.getForObject("http://ratingsDataService/ratingsdata/users/"+userId, UserRating.class);
 		
 		return 	userRating.getUserRating().stream().map(ratings ->{
-			Movie movie =rt.getForObject("http://localhost:8082/movie/"+ratings.getMovieId(), Movie.class);
+			Movie movie =rt.getForObject("http://movieInfoService/movie/"+ratings.getMovieId(), Movie.class);
 			return new CatalogItem(movie.getName(),"  " ,ratings.getRating());
 
 		}).collect(Collectors.toList());
