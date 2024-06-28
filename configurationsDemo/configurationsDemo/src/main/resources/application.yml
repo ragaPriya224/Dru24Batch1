@@ -1,0 +1,17 @@
+data:
+  base:
+    url: '"local"'
+    username: '"aaa"'
+  port: 1111
+db:
+  connection: '"http://localhost:/"'
+  host: '"local"'
+  port: '"8711"'
+dbValues: '{connectionString:''http://xxxxx'',username:''dummy'',password:''pass123''}'
+my:
+  list:
+    values: hello,hi,bye
+  greeting: "good morning"
+spring:
+  application:
+    name: configurationsDemo
