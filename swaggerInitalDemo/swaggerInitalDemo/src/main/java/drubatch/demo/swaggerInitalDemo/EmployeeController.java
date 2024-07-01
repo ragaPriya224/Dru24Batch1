@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 @RestController
 public class EmployeeController {
 
@@ -18,11 +21,13 @@ public class EmployeeController {
 	EmployeeRepository employeeRepository;
 
 
+	@Tag(name = "get", description="get methods of employee api")
 	@GetMapping("/employees")
 	public List<Employee> findAllEmployees(){
 		return employeeRepository.findAll();
 	}
-
+	
+	@Tag(name = "get", description="get methods of employee api")
 	@GetMapping("/employees/{employeeId}")
 	public Employee getEmployee(@PathVariable int employeeId){
 		Employee emp = employeeRepository.findById(employeeId).orElseThrow(()-> new RuntimeException(
@@ -35,6 +40,9 @@ public class EmployeeController {
 		emp.setId(0);
 		return employeeRepository.save(emp);
 	}
+	
+	@Operation(summary = "updating an employee",
+			description = "update an existing employee. The response is updated on emp table")
 	@PutMapping("/employees")
 	public Employee updateEmployee(@RequestBody Employee emp) {
 		return employeeRepository.save(emp);
