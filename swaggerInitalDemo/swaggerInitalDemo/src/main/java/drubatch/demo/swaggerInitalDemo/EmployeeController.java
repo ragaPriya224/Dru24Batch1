@@ -11,7 +11,12 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import demo.swaggerDemo.swaggerOpenApiDemo.Employee;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
@@ -49,6 +54,15 @@ public class EmployeeController {
 	}
 	
 
+	
+	@ApiResponses({
+		@ApiResponse(responseCode = "200",content= {
+				@Content(mediaType = "application/json",
+				schema = @Schema(implementation = Employee.class))
+				}),
+		@ApiResponse(responseCode = "404",
+		             description = "employee not found",
+		             content = @Content)})
 	@DeleteMapping("/employees/{employeeId}")
 	public String deleteEmployee(@PathVariable int employeeId){
 		Employee emp = employeeRepository.findById(employeeId).orElseThrow(()-> new RuntimeException(
