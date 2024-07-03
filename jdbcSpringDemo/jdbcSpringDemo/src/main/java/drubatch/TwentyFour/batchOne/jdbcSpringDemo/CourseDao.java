@@ -29,10 +29,12 @@ public class CourseDao {
 	};
 	
 	public List<Course> getCourseList(){
+		log.info("getcourselist is called");
 		String sql = "SELECT course_id, title, description,link  FROM course";
 		return jdbcTemplate.query(sql, rowMapper);
 	}
 	public void create(Course course) {
+		log.info("createcourswe is called");
 		String sql = "INSERT INTO course values(?,?,?,?)";
 		int output = jdbcTemplate.update(sql,course.getCourseId(),course.getTitle(),
 				course.getDescription(),course.getLink());
