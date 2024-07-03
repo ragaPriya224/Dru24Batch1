@@ -32,6 +32,8 @@ public class JdbcSpringDemoApplication {
 //		dao.delCourse(3);
 		System.out.println("*************");
 		System.out.println(namedJdbcDao.getTitle());
+		System.out.println("****title *********");
+		System.out.println(namedJdbcDao.getCourseTitle());
 		
 	}
 	
