@@ -16,7 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.druCare.apiDemo.entity.Topic;
 import com.druCare.apiDemo.service.TopicService;
-
+/**
+ * topiccontroller file
+ * @author Dell
+ *
+ */
 @RestController
 public class TopicController {
 
