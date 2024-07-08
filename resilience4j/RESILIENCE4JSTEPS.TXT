@@ -11,3 +11,11 @@ now, we need to give some responses to the user to engage the user
 
 started both the servers, hit http://localhost:9192/user-service/displayOrders - original data is coming
 http://localhost:9192/actuator/health -> status was up, closed, no failure calls. 
+stopped the catalog service, 
+   we hit  http://localhost:9192/user-service/displayOrders  - fallback data
+   http://localhost:9192/actuator/health -> status was closed, failed calls 1
+   hit the http://localhost:9192/user-service/displayOrder  4 more times, check fallback data
+   http://localhost:9192/actuator/health -> status was open, 
+   refresh -( wait-duration-in-open-state: 5s ) -> status was half open
+   http://localhost:9192/user-service/displayOrders hit 3 times, check status of actuator  as open
+  
