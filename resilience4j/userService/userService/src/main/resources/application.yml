@@ -1,0 +1,43 @@
+server:
+  port: 9192
+spring:
+  application:
+    name: userService
+
+#enable all the endpoints for actuator
+
+management:
+  health:
+    circuitbreakers:
+      enabled: true
+  endpoints:
+    web:
+     exposure:
+       include: health
+  endpoint:
+    health:
+      show-details: always
+
+#need to configure steps related to resilience 4j
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      userService: #name of instance defined in controller
+        register-health-indicator: true
+        event-consumer-buffer-size: 10
+        failure-rate-threshold: 50 #if 50% of requests from user to catalog fails, status
+#  changed from closed to open 
+        minimum-number-of-calls: 5
+        automatic-transition-from-open-to-half-open-enabled: true 
+ #from open to half open, transition mus thappen automatically 
+        wait-duration-in-open-state: 5s #after 5seconds, status go from open to halfopen
+        permitted-number-of-calls-in-half-open-state: 3 #in half open, it allows 3 call, after that
+ #success na closed, fail -> open 
+        sliding-window-size: 10
+        sliding-window-type: COUNT_BASED # count and time based 
+        
+        
+        
+        
+        
