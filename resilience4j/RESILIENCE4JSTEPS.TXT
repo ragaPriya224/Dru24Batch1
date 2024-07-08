@@ -18,4 +18,9 @@ stopped the catalog service,
    http://localhost:9192/actuator/health -> status was open, 
    refresh -( wait-duration-in-open-state: 5s ) -> status was half open
    http://localhost:9192/user-service/displayOrders hit 3 times, check status of actuator  as open
-  
+(so, after 3 calls, it takes decision whether to go to open or closed state)
+
+NOW, START catalog service
+http://localhost:9192/user-service/displayOrders - hit 3 times - here u get actual response, bcoz service is up
+And check http://localhost:9192/actuator/health - hit - status be closed
+
