@@ -13,3 +13,9 @@ POINTCUT -> expression
 
 
 advice types: 
+
+beforeadvice -> @Before-> before execution of join point methods
+afteradvice   -> @After  ->after execution of join point methods 
+afterreturningadvice ->@AfterReturning  - -want advice methods to be called after the normal exeuction of join point methods 
+afterthrowingadvice   @Afterthrowing   - want advice methods to be called after the exception thrown from join point methods 
+aroundadvice  @Around 
