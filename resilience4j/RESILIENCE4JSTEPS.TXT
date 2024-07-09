@@ -1,0 +1,26 @@
+1. create 2  sb projects with necessary dependency 
+2. in each sb project, get api  - controller, repo  files were created
+3. use resttemplate - check getapi working properly or not.. both getapi are checked
+4. now stop catalogservice, hit userapi -> 500 error. 
+how to handle this?
+now, we need to give some responses to the user to engage the user
+5. ad dependency - actuator, aop, resilience4j
+6. change app.properties
+7. in  user controller -> circuit breaker @, fallback method
+8. 
+
+started both the servers, hit http://localhost:9192/user-service/displayOrders - original data is coming
+http://localhost:9192/actuator/health -> status was up, closed, no failure calls. 
+stopped the catalog service, 
+   we hit  http://localhost:9192/user-service/displayOrders  - fallback data
+   http://localhost:9192/actuator/health -> status was closed, failed calls 1
+   hit the http://localhost:9192/user-service/displayOrder  4 more times, check fallback data
+   http://localhost:9192/actuator/health -> status was open, 
+   refresh -( wait-duration-in-open-state: 5s ) -> status was half open
+   http://localhost:9192/user-service/displayOrders hit 3 times, check status of actuator  as open
+(so, after 3 calls, it takes decision whether to go to open or closed state)
+
+NOW, START catalog service
+http://localhost:9192/user-service/displayOrders - hit 3 times - here u get actual response, bcoz service is up
+And check http://localhost:9192/actuator/health - hit - status be closed
+
