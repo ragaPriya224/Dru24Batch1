@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+						http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+	<aop:config>
+		<!--  ref-> reference of the class containing advice methods  -->
+		<aop:aspect id="log" ref="logging">
+			<!--  expression -> expression covering methods 
+			  on which advice is to be called -->
+			<aop:pointcut id="selectAll"
+				expression="execution(* com.questGlobal.aopDemo.*.*(..))" />
+			<!-- DECLARING THE ADVICE-->
+			<!-- syntax: <aop:{ADVICE NAME}>-->
+			<!-- BEFORE ADVICE DEFINITION-->
+			<aop:before pointcut-ref="selectAll" method="beforeAdvice" />
+			<!-- AFTER ADVICE DEFINITION-->
+			<aop:after pointcut-ref="selectAll" method="afterAdvice" />
+			<!-- AFTER RETURNING -->
+			<aop:after-returning pointcut-ref="selectAll"
+				returning="retVal"
+				method="afterReturningAdvice" />
+			<!-- AFTER THROWING -->
+			<aop:after-throwing pointcut-ref="selectAll"
+				throwing="ex"
+				method="AfterThrowingAdvice" />
+		</aop:aspect>
+	</aop:config>
+	<!-- Definition for student bean -->
+	<bean id="student" class="com.questGlobal.aopDemo.Student">
+		<property name="name" value="Zara" />
+		<property name="age" value="11" />
+	</bean>
+	<!-- Definition for logging aspect -->
+	<bean id="logging" class="com.questGlobal.aopDemo.Logging" />
+</beans>
