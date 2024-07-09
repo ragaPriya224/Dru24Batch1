@@ -1,0 +1,15 @@
+AOP -> ASPECT ORIENTED PROGRAMMING 
+
+ LOGGIN , TRANSACTION MANAGEMENT, 
+
+OOPS -> CLASS
+AOP -> ASPECTS
+
+
+ASPECT -> CLASS  -> @Aspect 
+JOIN POINT -> specific point in application 
+ADVICE  -> action 
+POINTCUT -> expression 
+
+
+advice types: 
